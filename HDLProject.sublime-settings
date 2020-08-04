@@ -1,0 +1,214 @@
+{
+  // Vivado or Quartus Tcl scripts.
+  // Add your own scripts to this list.
+  "build_tcl":
+  [
+    "${hdlproject}/tcl/vivado/simulate.tcl", 
+    "${hdlproject}/tcl/vivado/synthesize.tcl", 
+    "${hdlproject}/tcl/vivado/implement.tcl", 
+    "${hdlproject}/tcl/vivado/rtl_elaborate.tcl",
+    "${hdlproject}/tcl/vivado/report_utilization.tcl",
+    "${hdlproject}/tcl/vivado/add_file_to_project.tcl",
+    "${hdlproject}/tcl/vivado/remove_file_from_project.tcl",
+    "${hdlproject}/tcl/vivado/open_project_in_gui.tcl",
+    "${hdlproject}/tcl/vivado/write_project_tcl.tcl",
+  ],
+
+  // Global FPGA vendor tool path, indicate the full path to the bin folder
+  "build_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
+
+  // Syntax checking requires Vivado/Quartus/Modelsim/SynplifyPro installation and syntax_tool_path setting. 
+  "check_syntax_on_save": true,
+  
+  // Open and print stdout to a panel when checking syntax.
+  "check_syntax_panel": false,
+  
+  // Select to show syntax check error messages from third party tools below the line they reference.
+  // A dot in the gutter with a popup error message is always available. 
+  "check_syntax_phantoms": true,
+
+  // The email associated with a purchased license.
+  "email": "",
+
+  // Create expanded hierarchy for path lengths beyond Windows limit of 260 chars
+  "expand_hierarchy_on_win_path_limit": true,
+
+  // Extend completions to all files in scope. For example, package or header files. 
+  "extend_completions": true,
+
+  // If not defined, it will be created at $TEMP/sublime_hdl_project on Windows, or ~/.sublime_hdl_project on macOS and Linux. 
+  // Cannot be a network drive on Windows.
+  "output_path": "",
+
+  // Parse all HDL files for signals during project creation and refresh. Disable to speed up.
+  "parse_all_signals": false,
+
+  // Parse the fpga_project_file when creating project.
+  "parse_fpga_project_file": true,
+
+  // Parse all HDL files for generics and parameters during project creation and refresh
+  "parse_generics_and_parameters": true,
+
+ // Parse signals for active file on every save. 
+  "parse_signals_on_save": true,
+
+  // Enable/disable popups in VHDL and Verilog files
+  "popups_enabled": true,
+
+  // Check syntax automatically after refreshing a project
+  "post_refresh_check_syntax": false,
+  
+  // Product key provided when purchasing. 
+  "product_key": "",
+
+  // A list of VHDL/Verilog projects
+  "projects":
+  [
+    {
+      // (Optional) Project specific FPGA vendor tool path, indicate the full path to the bin folder
+      "build_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
+
+      // A reference .sublime-project file
+      // or a list of zero or more files (absolute paths)
+      // or a Vivado or Quartus project (xpr, .qsf), or project Tcl
+      "files":
+      [
+        "C:/example_designs/a10_soc_devkit_ghrd_qspi/a10_soc.sublime-project"
+      ],
+
+      // A list of zero or more folders where the project files reside.
+      "folders":
+      [
+      ],
+
+      // ID sets the basename of the output folder and the tag in the project menu
+      "id": "a10_soc",
+
+      // Path to a FPGA project file. Vivado xpr or Quartus qsf.
+      "fpga_project_file": "",
+
+      // Script to run at the beginning of project creation and when refreshing.
+      // The command line entry is an aggregate of the list elements.
+      "pre_parse_script": 
+      [
+        "python3.6", 
+        "c:/temp/my_pre_parser_script.py", 
+        "-o", 
+        "c:/temp/my_script_output"
+      ],
+
+      // Tool for syntax checking. If not defined, will use build_tool_path. 
+      // Supported tools: Vivado/Quartus/Modelsim/SynplifyPro 
+      "syntax_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
+
+      // Top level module/entity name
+      // If not defined, it will automatically pick one. 
+      "top_module": "ghrd_10as066n2_top",
+
+      //If using vivado IP, indicate if you want to unwrap the hierarchy
+      "unwrap_vivado_ip": false,
+
+      // A list of Verilog defines for this project. Currently only used by Vivado. 
+      "verilog_defines":
+      [
+        "mydefine0",
+        "mydefine1"
+      ]
+
+    },
+
+    {
+      "build_tool_path": "D:/intelFPGA_lite/17.1/quartus/bin64",
+      "files":
+      [
+        //"C:/example_designs/cpu/cpu.sublime-project"
+        "C:/example_designs/reference_designs/cpu/cpu.xpr"
+      ],
+      "folders":
+      [
+      ],
+      "id": "cpu",
+      "fpga_project_file": "C:/temp/cpu.qsf",
+      "syntax_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
+      "top_module": "top"
+    },
+
+    {
+      "build_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
+      "files":
+      [
+        "C:/example_designs/cv_soc_devkit_pcie/cv_soc.sublime-project"
+      ],
+      "folders":
+      [
+      ],
+      "id": "cv_soc",
+      "fpga_project_file": "",
+      "syntax_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
+      //"top_module": ""
+    },
+
+    // Example simplified project settings
+    {
+      "files":
+      [
+        "C:/example_designs/fpu_double/fpu_double.sublime-project"
+      ],
+      "id": "fpu_double",
+      "syntax_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
+    },
+
+    {
+      "fpga_project_file": "C:/temp/cpu.xpr",
+      "id": "cpu_b",
+      "syntax_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
+    }
+
+  ],  
+
+  // Open and print stdout to a panel when refreshing the project.
+  "refresh_project_panel": true,
+
+  // When clicking popup links, navigate within a separate horizontal panel above the active view.
+  "split_panel_mode": false,
+
+  // Indicate whether the open hdl file will be automatically revealed in the sidebar. 
+  "sync_sidebar": true,
+
+  // A global list of syntax tools to choose from when calling from menu or command pallette. 
+  // Uncomment and fill in with your installed tools.
+  //"syntax_tool_path":
+  //[
+  //  "C:/xilinx/Vivado/2017.1/bin",
+  //  "C:/xilinx/Vivado/2019.1/bin",
+  //  "C:/ModelSimPro/modeltech/win32acoem",
+  //  "C:/SynplifyPro/bin"
+  //],
+
+  // Use this to pass in any string to a custom Tcl script.
+  "user_tcl_arg": "",
+
+  // A list of projects grouped into workspaces.
+  "workspaces":
+  [
+    {
+      "id": "my_ws",
+      "project_ids":
+      [
+        "cpu",
+        "cv_soc",
+        "fpu_double"
+      ]
+    },
+    {
+      "id": "my_ws_b",
+      "project_ids":
+      [
+        "cpu",
+        "cv_soc"
+      ]
+    }
+  ]
+
+
+}

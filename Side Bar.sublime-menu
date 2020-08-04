@@ -1,0 +1,6 @@
+[
+  { "caption": "-" },
+  { "caption": "Reveal In Sidebar File System", "command": "sidebar_reveal_in_sidebar_file_sys", "args": {"paths": []} },
+  { "caption": "Reveal In Sidebar Hierarchy", "command": "sidebar_reveal_in_sidebar_hierarchy", "args": {"paths": []} },
+  { "caption": "HDLP Open Containing Folder", "command": "sidebar_open_original_containing_folder", "args": {"paths": []} },
+]

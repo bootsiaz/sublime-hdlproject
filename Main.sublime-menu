@@ -1,0 +1,119 @@
+[
+
+    {
+        "caption": "Project",
+        "mnemonic": "P",
+        "id": "project",
+        "children":
+        [
+            {"caption": "-"},
+            {
+             "caption": "Create HDL Project",
+             "children":
+             [
+                 { "command": "create_hdl_project", "args": {"index": 0}},
+                 { "command": "create_hdl_project", "args": {"index": 1}},
+                 { "command": "create_hdl_project", "args": {"index": 2}},
+                 { "command": "create_hdl_project", "args": {"index": 3}},
+                 { "command": "create_hdl_project", "args": {"index": 4}},
+                 { "command": "create_hdl_project", "args": {"index": 5}},
+                 { "command": "create_hdl_project", "args": {"index": 6}},
+                 { "command": "create_hdl_project", "args": {"index": 7}},
+                 { "command": "create_hdl_project", "args": {"index": 8}},
+                 { "command": "create_hdl_project", "args": {"index": 9}},
+                 { "command": "create_hdl_project", "args": {"index": 10}},
+                 { "command": "create_hdl_project", "args": {"index": 11}},
+                 { "command": "create_hdl_project", "args": {"index": 12}},
+                 { "command": "create_hdl_project", "args": {"index": 13}},
+                 { "command": "create_hdl_project", "args": {"index": 14}},
+                 { "command": "create_hdl_project", "args": {"index": 15}},
+                 { "command": "create_hdl_project", "args": {"index": 16}},
+                 { "command": "create_hdl_project", "args": {"index": 17}},
+                 { "command": "create_hdl_project", "args": {"index": 18}},
+                 { "command": "create_hdl_project", "args": {"index": 19}},
+                 { "command": "create_hdl_project", "args": {"index": 20}},
+                 { "command": "create_hdl_project", "args": {"index": 21}},
+                 { "command": "create_hdl_project", "args": {"index": 22}},
+                 { "command": "create_hdl_project", "args": {"index": 23}},
+                 { "command": "create_hdl_project", "args": {"index": 24}},
+                 { "command": "create_hdl_project", "args": {"index": 25}},
+                 { "command": "create_hdl_project", "args": {"index": 26}},
+                 { "command": "create_hdl_project", "args": {"index": 27}},
+                 { "command": "create_hdl_project", "args": {"index": 28}},
+                 { "command": "create_hdl_project", "args": {"index": 29}},
+                 { "command": "create_hdl_project", "args": {"index": 30}},
+                 { "command": "create_hdl_project", "args": {"index": 31}},
+                 { "command": "create_hdl_project", "args": {"index": 32}},
+                 { "command": "create_hdl_project", "args": {"index": 33}},
+                 { "command": "create_hdl_project", "args": {"index": 34}},
+                 { "command": "create_hdl_project", "args": {"index": 35}},
+                 { "command": "create_hdl_project", "args": {"index": 36}},
+                 { "command": "create_hdl_project", "args": {"index": 37}},
+                 { "command": "create_hdl_project", "args": {"index": 38}},
+                 { "command": "create_hdl_project", "args": {"index": 39}},
+             ]
+            },
+            { "caption": "Open HDL Project", "command": "open_hdl_project" },
+            { "caption": "Refresh HDL Project", "command": "refresh_hdl_project" },
+            {"caption": "-"},
+            {
+             "caption": "Build Tcl",
+             "children":
+             [
+                 { "command": "do_tcl_build", "args": {"index": 0}},
+                 { "command": "do_tcl_build", "args": {"index": 1}},
+                 { "command": "do_tcl_build", "args": {"index": 2}},
+                 { "command": "do_tcl_build", "args": {"index": 3}},
+                 { "command": "do_tcl_build", "args": {"index": 4}},
+                 { "command": "do_tcl_build", "args": {"index": 5}},
+                 { "command": "do_tcl_build", "args": {"index": 6}},
+                 { "command": "do_tcl_build", "args": {"index": 7}},
+                 { "command": "do_tcl_build", "args": {"index": 8}},
+                 { "command": "do_tcl_build", "args": {"index": 9}},
+                 { "command": "do_tcl_build", "args": {"index": 10}},
+                 { "command": "do_tcl_build", "args": {"index": 11}},
+                 { "command": "do_tcl_build", "args": {"index": 12}},
+                 { "command": "do_tcl_build", "args": {"index": 13}},
+                 { "command": "do_tcl_build", "args": {"index": 14}},
+                 { "command": "do_tcl_build", "args": {"index": 15}},
+                 { "command": "do_tcl_build", "args": {"index": 16}},
+                 { "command": "do_tcl_build", "args": {"index": 17}},
+                 { "command": "do_tcl_build", "args": {"index": 18}},
+                 { "command": "do_tcl_build", "args": {"index": 19}},
+             ]
+            },
+            { "caption": "Cancel Tcl Build", "command": "cancel_tcl_build"},
+        ]
+    },
+
+    {
+        "caption": "Preferences",
+        "mnemonic": "n",
+        "id": "preferences",
+        "children":
+        [
+            {
+                "caption": "Package Settings",
+                "mnemonic": "P",
+                "id": "package-settings",
+                "children":
+                [
+                    {
+                        "caption": "HDLProject",
+                        "children":
+                        [
+                            { "caption": "Get License", "command": "hdl_project_get_license"},
+                            { "command": "edit_settings", 
+                              "args": {"base_file": "${packages}/HDLProject/HDLProject.sublime-settings", 
+                              "default": "// Settings in here override those in \"HDLProject/HDLProject.sublime-settings\".\n{\n\t$0\n}\n"}, "caption": "Settings" },
+                            { "caption": "Website", "command": "hdl_project_website"},
+                            { "caption": "Docs", "command": "hdl_project_docs"},
+                            { "caption": "Issues", "command": "hdl_project_issues"},
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+
+]

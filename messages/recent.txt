@@ -1,0 +1,30 @@
+HDLProject for Sublime Text 3
+
+HDLProject: https://hdlproject.com 
+Package Control: https://packagecontrol.io/packages/HDLProject
+BitBucket: https://bitbucket.org/bootsiaz/sublime-hdlproject/overview
+email: info@intrachip.com
+
+## Notice ##
+
+A license is only required for projects larger than 50 files. Please purchase at www.hdlproject.com 
+and a product key will be emailed to you within 24 hours. 
+
+Please contact me at **info@intrachip.com** with any questions or concerns.
+
+******************************************************************************
+
+Changes:
+
+#### v1.4.0 ####
+
+* Added initial support for choosing from multiple syntax tools from command pallette.
+* Started on updates for ST4.
+* Changed licensing to require product key for projects with more than 50 files. 
+
+
+
+******************************************************************************
+
+
+

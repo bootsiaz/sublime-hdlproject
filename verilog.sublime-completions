@@ -1,0 +1,24 @@
+{
+   "scope": "source.verilog",
+
+   "completions":
+   [
+      {"trigger": "always\t always..", 
+        "contents": "always @(posedge ${1:clock_name})\nbegin\n\t$2\nend"},
+      {"trigger": "wire\t wire", "contents": "wire [${1:high}:${2:low}] ${3:name};" },
+      {"trigger": "reg\t reg", "contents": "reg [${1:high}:${2:low}] ${3:name};" },
+      {"trigger": "localparam\t localparam", "contents": "localparam [${1:high}:${2:low}] ${3:name} = ${4:value};" },
+      {"trigger": "parameter\t parameter", "contents": "parameter [${1:high}:${2:low}] ${3:name} = ${4:value};" },
+      {"trigger": "initial\t initial", 
+        "contents": "initial\nbegin\n\t$1\nend"},
+      {"trigger": "if\t if..", 
+        "contents": "if (${1:condition})\nbegin\n\t$2\nend"},
+      {"trigger": "else if\t else if", 
+        "contents": "else if (${1:condition})\nbegin\n\t$2\nend"},
+      {"trigger": "else\t else..", 
+        "contents": "else\nbegin\n\t$1\nend"},
+      {"trigger": "case\t case", "contents": "case (${1:state_signal})\n\t${2:idle_state} :\n\t\t$3\n\n\tdefault :\n\t\t${1:state_signal} <= ${2:idle_state};\nendcase"},
+      {"trigger": "begin\t begin..", 
+        "contents": "begin\n\t$1\nend"},
+   ]
+}

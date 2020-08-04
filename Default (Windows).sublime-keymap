@@ -1,0 +1,5 @@
+[
+    { "keys": ["ctrl+shift+l"], "command": "toggle_hdl_popups" },
+    { "keys": ["ctrl+shift+b"], "command": "cancel_tcl_build"},
+    { "keys": ["alt+r"], "command": "refresh_hdl_project" },
+]

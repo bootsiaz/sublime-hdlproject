@@ -1,0 +1,29 @@
+
+HDLProject
+Copyright (c) 2016-2020 IntraChip Solutions Inc. <info@intrachip.com>
+
+HDLProject requires a license for projects larger than 50 files. The license can only be 
+obtained by purchasing from the author, IntraChip Solutions Inc.. Any person who has purchased a 
+license and enters the provided product key is granted use of HDLProject on any number of computers, 
+of any supported operating system. Licenses are valid for only a single person, and are valid for 
+all upgrades to the major version purchased.
+
+Except as and only to the extent expressly permitted in this License or by applicable law, you may not copy, decompile, 
+reverse engineer, disassemble, attempt to derive the source code of, modify, or create derivative works of the Software 
+or any part thereof. Any attempt to do so is a violation of the rights of IntraChip Solutions Inc. and its licensors 
+of the Software. If you breach this restriction, you may be subject to prosecution and damages.
+
+Redistribution, modification, merging, publication, distribution, sublicensing,
+and/or selling copies of HDLProject is strictly prohibited. Please contact
+IntraChip Solutions Inc. at info@intrachip.com with any questions.
+
+THE SOFTWARE IS NOT INTENDED FOR USE IN WHICH THE FAILURE OF THE SOFTWARE COULD LEAD TO DEATH, PERSONAL INJURY, 
+OR SEVERE PHYSICAL OR ENVIRONMENTAL DAMAGE.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

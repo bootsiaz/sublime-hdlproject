@@ -1,0 +1,22 @@
+{
+   "scope": "source.vhdl",
+
+   "completions":
+   [
+      {"trigger": "signal\t signal", "contents": "signal ${1:name} : ${2:type};" },
+      {"trigger": "variable\t variable", "contents": "variable ${1:name} : ${2:type};" },
+      {"trigger": "constant\t constant", "contents": "constant ${1:name} : ${2:type} := ${3:const_val};" },
+      {"trigger": "std_logic\t std_logic", "contents": "std_logic" },
+      {"trigger": "std_logic_vector\t std_logic_vector", "contents": "std_logic_vector($1 downto $2)" },
+      {"trigger": "rising_edge\t rising_edge", "contents": "rising_edge(${1:clock_name})" },
+      {"trigger": "process\t process..", 
+        "contents": "${1:identifier} : process(${2:sensitivity_list}) is\nbegin\n\t$3\nend process; -- ${1:identifier}"},
+      {"trigger": "if\t if..", "contents": "if ${1:condition} then\n\t$2\nend if;"},
+      {"trigger": "others\t others", "contents": "others => '0'"},
+      {"trigger": "for\t for..", "contents": "for ${1:iterator} in ${2:range} loop\n\t$3\nend loop;"},
+      {"trigger": "function\t function..", "contents": "function ${1:name} (${2:parameter_list}) return ${3:type} is\n${4:declarations}\nbegin\n\t${5:sequential statements}\nend ${1:function_name};"},
+      {"trigger": "case\t case..", "contents": "case (${1:state_signal}) is\n\twhen ${2:idle_state} =>\n\t\t$3\n\n\twhen others =>\n\t\t${1:state_signal} <= ${2:idle_state};\nend case;"},
+      {"trigger": "when\t when..=>", "contents": "when ${1:state} =>\n\t"},
+
+   ]
+}

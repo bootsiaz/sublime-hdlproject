@@ -1,0 +1,28 @@
+[
+  { "caption": "-" },
+  { "caption": "HDLProject",
+    "children":
+    [
+      {
+        "caption": "Settings",
+        "children":
+        [
+          {"caption": "Check Syntax On Save", "command": "update_hdl_project_setting", "args": {"setting": "check_syntax_on_save"}, "checkbox": true},
+          {"caption": "Check Syntax Panel", "command": "update_hdl_project_setting", "args": {"setting": "check_syntax_panel"}, "checkbox": true},
+          {"caption": "Check Syntax Phantoms", "command": "update_hdl_project_setting", "args": {"setting": "check_syntax_phantoms"}, "checkbox": true},
+          {"caption": "Parse Generics and Parameters", "command": "update_hdl_project_setting", "args": {"setting": "parse_generics_and_parameters"}, "checkbox": true},
+          {"caption": "Parse FPGA Project File", "command": "update_hdl_project_setting", "args": {"setting": "parse_fpga_project_file"}, "checkbox": true},
+          {"caption": "Popups Enabled", "command": "update_hdl_project_setting", "args": {"setting": "popups_enabled"}, "checkbox": true},
+          {"caption": "Refresh Project Panel", "command": "update_hdl_project_setting", "args": {"setting": "refresh_project_panel"}, "checkbox": true},
+          {"caption": "Sync Sidebar", "command": "update_hdl_project_setting", "args": {"setting": "sync_sidebar"}, "checkbox": true},
+          {"caption": "Split Panel Mode", "command": "update_hdl_project_setting", "args": {"setting": "split_panel_mode"}, "checkbox": true},
+        ]
+      },
+      { "caption": "HDLP Open Containing Folder", "command": "context_open_original_containing_folder" },
+      { "caption": "Reveal in Sidebar", "command": "hdl_project_reveal_in_sidebar"},
+      { "caption": "Open User Settings", "command": "edit_settings", 
+        "args": {"base_file": "${packages}/HDLProject/HDLProject.sublime-settings", 
+        "default": "// Settings in here override those in \"HDLProject/HDLProject.sublime-settings\".\n{\n\t$0\n}\n"}},
+    ]
+  }
+]
