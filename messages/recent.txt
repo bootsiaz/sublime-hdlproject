@@ -16,12 +16,13 @@ Please contact me at **info@intrachip.com** with any questions or concerns.
 
 Changes:
 
-#### v1.4.0 ####
+#### v1.4.1 ####
 
-* Added initial support for choosing from multiple syntax tools from command pallette.
-* Started on updates for ST4.
-* Changed licensing to require product key for projects with more than 50 files. 
-
+* Added initial signal follower in popups for vhdl. 
+* Added forward assignment popup links in vhdl.
+* Fix for links to vhdl records with end tag name.
+* Fix for inconsistent behavior after first opening ST3/4 vs after working with a project in memory. 
+* Other bug fixes
 
 
 ******************************************************************************

@@ -176,7 +176,7 @@ Note, the theme [Boxy Theme] (https://github.com/ihodev/sublime-boxy) was used f
 
 ##### Admin Privileges #####
 
-Note that on Windows, for advanced users, it is recommended to run ST3 with admin privileges. This allows for the creation of symlinks and speeds up project creation. Without admin privileges, hardlinks are created which are usually not supported by other plugins -- for example, revision control plugins. Although HDLProject itself will work just fine.
+**_Note that on Windows it is recommended to always run ST3 with admin privileges.** This allows for the creation of symlinks and speeds up project creation. Without admin privileges, hardlinks are created which are usually not supported by other plugins -- for example, revision control plugins. Although HDLProject itself will work just fine.
 
 ##### Network Drives #####
 
@@ -211,6 +211,20 @@ Please contact me at **info@intrachip.com** with any questions or concerns.
 
 ## Changelog ##
 
+#### v1.4.1 ####
+
+* Added initial signal follower in popups for vhdl. 
+* Added forward assignment popup links in vhdl.
+* Fix for links to vhdl records with end tag name.
+* Fix for inconsistent behavior after first opening ST3/4 vs after working with a project in memory. 
+* Other bug fixes
+
+#### v1.4.0 ####
+
+* Added initial support for choosing from multiple syntax tools from command pallette.
+* Started on updates for ST4.
+* Changed licensing to require product key for projects with more than 50 files. 
+
 #### v1.3.0 ####
 
 * Added support for Modelsim linting via **syntax_tool_path** setting as per user request.
@@ -231,18 +245,6 @@ Please contact me at **info@intrachip.com** with any questions or concerns.
 * Added "parse_generics_and_parameters" setting. 
 * Added limited support to wildcards in folder_exclude_patterns
 * Bug fixes.
-
-
-#### v1.1.5 ####
-
-* Added initial support for popups in standalone VHDL and Verilog files as per user request.
-* Added popups_enabled setting
-* Added post_refresh_check_syntax setting
-* Added post_refresh_update_generics setting
-* Added expand_hierarchy_on_win_path_limit setting for Windows
-* Bugfix to detect moved source files during refresh project
-* Bugfix for records not being picked up in signal assignment list
-* Fix for popup link line numbers
 
 
 
