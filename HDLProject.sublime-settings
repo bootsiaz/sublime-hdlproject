@@ -1,4 +1,7 @@
 {
+  // Autoscroll the custom panel views
+  "autoscroll": true,
+
   // Vivado or Quartus Tcl scripts.
   // Add your own scripts to this list.
   "build_tcl":

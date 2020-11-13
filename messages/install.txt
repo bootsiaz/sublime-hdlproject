@@ -207,9 +207,16 @@ HDLProject is usually installed as a plugin via Package Control within Sublime T
 
 ## Contact ##
 
-Please contact me at **info@intrachip.com** with any questions or concerns.
+Having trouble getting started? Please contact me at **info@intrachip.com**!
 
 ## Changelog ##
+
+#### v1.4.2 ####
+
+* Updates and fixes for signal follower links in popups
+* Fix for panelview auto-scrolling for ST4, added new autoscroll setting.
+* Fix for sync sidebar for ST4
+* Bug fixes
 
 #### v1.4.1 ####
 

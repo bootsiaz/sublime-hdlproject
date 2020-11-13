@@ -10,19 +10,18 @@ email: info@intrachip.com
 A license is only required for projects larger than 50 files. Please purchase at www.hdlproject.com 
 and a product key will be emailed to you within 24 hours. 
 
-Please contact me at **info@intrachip.com** with any questions or concerns.
+Having trouble getting started? Please contact me at **info@intrachip.com**!
 
 ******************************************************************************
 
 Changes:
 
-#### v1.4.1 ####
+#### v1.4.2 ####
 
-* Added initial signal follower in popups for vhdl. 
-* Added forward assignment popup links in vhdl.
-* Fix for links to vhdl records with end tag name.
-* Fix for inconsistent behavior after first opening ST3/4 vs after working with a project in memory. 
-* Other bug fixes
+* Updates and fixes for signal follower links in popups
+* Fix for panelview auto-scrolling for ST4, added new autoscroll setting.
+* Fix for sync sidebar for ST4
+* Bug fixes
 
 
 ******************************************************************************
