@@ -16,12 +16,10 @@ Having trouble getting started? Please contact me at **info@intrachip.com**!
 
 Changes:
 
-#### v1.4.2 ####
+#### v1.4.3 ####
 
-* Updates and fixes for signal follower links in popups
-* Fix for panelview auto-scrolling for ST4, added new autoscroll setting.
-* Fix for sync sidebar for ST4
-* Bug fixes
+* Cleaned up the popup follower links
+* Fixed regression when parsing signals for files outside the project.
 
 
 ******************************************************************************

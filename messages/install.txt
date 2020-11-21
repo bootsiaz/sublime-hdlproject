@@ -211,6 +211,11 @@ Having trouble getting started? Please contact me at **info@intrachip.com**!
 
 ## Changelog ##
 
+#### v1.4.3 ####
+
+* Cleaned up the popup follower links
+* Fixed regression when parsing signals for files outside the project.
+
 #### v1.4.2 ####
 
 * Updates and fixes for signal follower links in popups
