@@ -16,10 +16,9 @@ Having trouble getting started? Please contact me at **info@intrachip.com**!
 
 Changes:
 
-#### v1.4.3 ####
+#### v1.4.4 ####
 
-* Cleaned up the popup follower links
-* Fixed regression when parsing signals for files outside the project.
+* Tentative fix for Modelsim syntax check when install dir is Mentor/modeltech...
 
 
 ******************************************************************************

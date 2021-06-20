@@ -211,6 +211,11 @@ Having trouble getting started? Please contact me at **info@intrachip.com**!
 
 ## Changelog ##
 
+
+#### v1.4.4 ####
+
+* Tentative fix for Modelsim syntax check when install dir is Mentor/modeltech...
+
 #### v1.4.3 ####
 
 * Cleaned up the popup follower links
