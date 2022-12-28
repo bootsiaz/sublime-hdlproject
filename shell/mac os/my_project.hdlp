@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+ABSPATH=$(cd "$(dirname "$0")"; pwd -P)
+subl --command "create_hdl_project_shell {\"project_file_path\" : \"$ABSPATH\"}"
+
+

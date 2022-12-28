@@ -1,9 +1,16 @@
 {
   // Autoscroll the custom panel views
   "autoscroll": true,
+ 
+  // Optional key for ssh connections (for example to AWS EC2)
+  "aws_pem_key": "",
 
   // Vivado or Quartus Tcl scripts.
   // Add your own scripts to this list.
+  // arg0: project file
+  // arg1: top_module
+  // arg2: the file name of the open view
+  // arg3: user_tcl_arg setting
   "build_tcl":
   [
     "${hdlproject}/tcl/vivado/simulate.tcl", 
@@ -20,18 +27,27 @@
   // Global FPGA vendor tool path, indicate the full path to the bin folder
   "build_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
 
-  // Syntax checking requires Vivado/Quartus/Modelsim/SynplifyPro installation and syntax_tool_path setting. 
+  // Check syntax for the active project.
+  // Syntax checking requires Vivado/Quartus/Modelsim/SynplifyPro installation build_tool_path.
+  // The syntax_tool_path will overide the build_tool_path for syntax checks.
   "check_syntax_on_save": true,
+
+  // Check syntax for all projects in a workspace.
+  "check_syntax_for_workspace_on_save" : false,
   
   // Open and print stdout to a panel when checking syntax.
   "check_syntax_panel": false,
   
   // Select to show syntax check error messages from third party tools below the line they reference.
   // A dot in the gutter with a popup error message is always available. 
-  "check_syntax_phantoms": true,
+  "check_syntax_phantoms": false,
 
-  // The email associated with a purchased license.
+  // User email, required for license check.
   "email": "",
+
+  // Exclude these directories when using remote syntax check or builds.
+  // Path is relative to top level path of project on disk.
+  "exclude_dirs": [],
 
   // Create expanded hierarchy for path lengths beyond Windows limit of 260 chars
   "expand_hierarchy_on_win_path_limit": true,
@@ -61,19 +77,61 @@
   // Check syntax automatically after refreshing a project
   "post_refresh_check_syntax": false,
   
-  // Product key provided when purchasing. 
-  "product_key": "",
+  // Enables use of relative paths within pre_parse_script command.
+  // Currently only works with paths relative to fpga_project_file setting.
+  "pre_parse_with_relative_paths": false,
+
+  // Optional script to run prior to all project creation and refresh.
+  // The command line entry is an aggregate of the list elements.
+  // Copy and uncomment if needed.
+  // "pre_parse_script": 
+  // [
+  //   "python3.6", 
+  //   "c:/temp/my_global_pre_parser_script.py", 
+  //   "-o", 
+  //   "c:/temp/my_script_output"
+  // ],
+
+  // Product key url for subscription license.
+  "product_key_url": "",
 
   // A list of VHDL/Verilog projects
   "projects":
   [
+
+    // Example simplest method of mirroring fpga projects.
+    // No need for id setting.
+    // The project file name is not necessary. 
+    // If not a file, the first project found in the immediate folder will be used.
+    // Supported: (xpr, qsf, prjx, xci, xml)
+    {
+      "fpga_project_file": "C:/temp/my_fpga_proj",
+    },
+
+    // Examples with simplified project settings
+    {
+      "files":
+      [
+        "C:/example_designs/fpu_double/fpu_double.sublime-project"
+      ],
+      "id": "fpu_double",
+      "syntax_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
+    },
+
+    {
+      "fpga_project_file": "C:/temp/cpu.xpr",
+      "id": "cpu_b",
+      "syntax_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
+    },
+
+    // Example using all supported settings.
     {
       // (Optional) Project specific FPGA vendor tool path, indicate the full path to the bin folder
       "build_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
 
       // A reference .sublime-project file
       // or a list of zero or more files (absolute paths)
-      // or a Vivado or Quartus project (xpr, .qsf), or project Tcl
+      // or a FPGA project.
       "files":
       [
         "C:/example_designs/a10_soc_devkit_ghrd_qspi/a10_soc.sublime-project"
@@ -87,7 +145,7 @@
       // ID sets the basename of the output folder and the tag in the project menu
       "id": "a10_soc",
 
-      // Path to a FPGA project file. Vivado xpr or Quartus qsf.
+      // Path to a FPGA project file. Vivado xpr, Quartus qsf, Libero prjx, or Efinix xml.
       "fpga_project_file": "",
 
       // Script to run at the beginning of project creation and when refreshing.
@@ -95,7 +153,7 @@
       "pre_parse_script": 
       [
         "python3.6", 
-        "c:/temp/my_pre_parser_script.py", 
+        "c:/temp/my_local_pre_parser_script.py", 
         "-o", 
         "c:/temp/my_script_output"
       ],
@@ -116,7 +174,11 @@
       [
         "mydefine0",
         "mydefine1"
-      ]
+      ],
+
+      // Remote project path on server. Used for syntax check from remote install or remote builds.
+      // Can be global or unique to project
+      "remote_project_path": ""
 
     },
 
@@ -149,28 +211,16 @@
       "fpga_project_file": "",
       "syntax_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
       //"top_module": ""
-    },
-
-    // Example simplified project settings
-    {
-      "files":
-      [
-        "C:/example_designs/fpu_double/fpu_double.sublime-project"
-      ],
-      "id": "fpu_double",
-      "syntax_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
-    },
-
-    {
-      "fpga_project_file": "C:/temp/cpu.xpr",
-      "id": "cpu_b",
-      "syntax_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
     }
 
   ],  
 
   // Open and print stdout to a panel when refreshing the project.
   "refresh_project_panel": true,
+
+  // Remote project path on server. Used for syntax check from remote install or remote builds.
+  // Can be global or unique to project
+  "remote_project_path": "",
 
   // When clicking popup links, navigate within a separate horizontal panel above the active view.
   "split_panel_mode": false,
@@ -179,16 +229,19 @@
   "sync_sidebar": true,
 
   // A global list of syntax tools to choose from when calling from menu or command pallette. 
-  // Uncomment and fill in with your installed tools.
-  //"syntax_tool_path":
-  //[
+  // If check_syntax_on_save is set, the syntax check will iterate through all tools listed when saving a vhdl or verilog file.
+  // Copy and uncomment and fill in with your installed tools.
+  // Can be local or remote path
+  // "syntax_tool_path":
+  // [
   //  "C:/xilinx/Vivado/2017.1/bin",
   //  "C:/xilinx/Vivado/2019.1/bin",
   //  "C:/ModelSimPro/modeltech/win32acoem",
-  //  "C:/SynplifyPro/bin"
-  //],
+  //  "C:/SynplifyPro/bin",
+  //  "ubuntu@3.96.71.89:/home/ubuntu/xilinx/Vivado/2019.2/bin"
+  // ],
 
-  // Use this to pass in any string to a custom Tcl script.
+  // Use this to pass in any string to the build Tcl script.
   "user_tcl_arg": "",
 
   // A list of projects grouped into workspaces.
@@ -196,6 +249,7 @@
   [
     {
       "id": "my_ws",
+      // The project_ids are "id" fields, or "fpga_project_file" if the id is absent. These are required to be presend in the projects list above.
       "project_ids":
       [
         "cpu",

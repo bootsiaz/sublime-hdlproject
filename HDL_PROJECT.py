@@ -94,9 +94,12 @@ from hdl_project.commands import (
   ToggleSplitPanelCommand,
   ExtendHdlCompletionsCommand,
   CreateHdlWorkspaceCommand,
+  OpenHdlWorkspaceCommand,
   #CheckHdlWorkspaceSyntaxCommand,
   ParseProjectGenericsProcessEventListenerCommand,
-  ParseConstantsProcessEventListenerCommand
+  ParseConstantsProcessEventListenerCommand,
+  CheckHdlSyntaxForWorkspaceEventListenerCommand,
+  CreateHdlProjectShellCommand
 )
 
 #Commands that require v3.1 API support. 
