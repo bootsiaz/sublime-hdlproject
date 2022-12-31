@@ -30,35 +30,15 @@ https://bitbucket.org/bootsiaz/sublime-hdlproject/overview
 
 ### Project Creation ###
 
-#### Example Use Case: Developing FPGA ####
-
 For FPGA development, you can simply use the fpga_project_file to point to the file or path of your FPGA project. No other project settings are required.
 
-Otherwise, you can add specific files or folders to a project. Please see the example settings file. For any issues with project creation, please contact me at info@fpgaland.com.
+Alternatively, you can use one of the example scripts to allow for opening or creating a project by double clicking a file (or right-click Run Program on Linux).
 
-#### (Old Method) Creating a Hierarchical Project from a .sublime-project File ####
+Otherwise, you can add specific files or folders to a project. Please see the example settings file. 
 
-A simple method of project creation is by sourcing a **_reference ST3 project_**. This ST3 .sublime-project can be easily created by opening a new view, adding folders to the project via the project menu, and saving the .sublime-project file. You can then create a HDLProject project via the command palette (ctrl+shift+p) using the **Create HDL Project** command, and selecting **_current project_** in the drop-down menu. This will create and open a new HDLProject project and write a new entry to the package settings file. 
+On Windows, please make sure **Windows Developer Mode** is enabled to use this plugin.
 
-Note that when adding folders to your reference ST4 project, all VHDL and Verilog files will be parsed. For best performance, only include folders that are required for your design. In the reference .sublime-project file, folder_exclude_patterns and file_exclude_patterns lists are supported. Wilcards for folder_exclude_patterns can be used in a limited way. For example, '\*src' will ignore all files with the string 'src' in its path. Please consult the ST4 projects docs for usage. https://www.sublimetext.com/docs/3/projects.html
-
-If the window opens without the sidebar visible, you can select **_View->Side Bar->Show Side Bar_**
-
-Once the hierarchical project is created, the status bar will indicate if there are any ambiguous files -- multiple HDL files with the same module/entity name. These can be cleaned up by running the **Cleanup Module Ambiguity** command from the command palette. The ambiguous modules are displayed in a drop-down list, and the user can select which path they want to keep in the project, the remaining paths will be removed. The reference .sublime-project will be automatically updated with new file_exclude_patterns.
-
-#### (Old Method) Creating a Hierarchical Project from a Vivado or Quartus Project File ####
-
-Alternatively, if using Vivado or Quartus, it makes sense to keep your HDLProject project in sync with your designs. There are a couple ways of doing this. The simplest method is to source your Vivado **_.xpr_** or Quartus **_.qsf_**. Enter the path of your vendor project file in the **_files_l_** list in the HDLProject settings file....what about fpga_project_file??__
-
-You can also source a **_project Tcl_**. First, create a project Tcl in the vendor gui. Then reference this in the **_files_l_** list. If using Vivado, make sure to select "write all project properties" when generating the Tcl. (A tcl script is also included to create the project tcl for Vivado.)
-
-#### Creating a Hierarchical Project from a List of Files and Folders ####
-
-A third way of creating a project is to add the folders and files directly into the lists in the HDLProject package settings file. This is useful when working with well organized libraries or smaller designs.
-
-The package settings file supports an unlimited number of project configurations.  
-
-Use the **Refresh HDL Project** command to update the active project in memory.
+For any issues with project creation, please contact me at info@fpgaland.com.
 
 ### Navigating the Project ###
 
@@ -87,9 +67,9 @@ Popups allow for quick navigation within the active file and project. For exampl
 
 Navigation links are also provided when hovering over a module instance or package/incude statement, which provides a file preview and the ability to jump to any line in that file.  
 
-### Syntax Checking (Linting) ###
+### Live Syntax Checking ###
 
-Syntax checking requires a third-party tool installation and the location specified with the **syntax_tool_path** setting. If not defined, it will try using the **build_tool_path**. Supported tools are Vivado, Quartus, Modelsim, and SynplifyPro. The **check_syntax_on_save** setting will call the syntax checker thread when any file is saved within a HDL Project window. 
+Syntax checking requires a third-party tool installation and the location specified with the **syntax_tool_path** setting. If not defined, it will try using the **build_tool_path**. Supported tools are listed in the example user settings file. The **check_syntax_on_save** setting will call the syntax checker thread when any VHDL or Verilog file is saved within a HDL Project window. 
 
 The number of errors is displayed in the status bar. You can navigate syntax errors in your project by using the **go_to_prev_syntax_error** and **go_to_next_syntax_error** commands. A dot is placed in the gutter to the left of the line associated with any error. Hovering over the dot will provide a popup with the error message from the syntax log. To view the syntax log, enable the **check_syntax_panel** setting. Note, as with most other tools, syntax checking only works within an active project.
 
@@ -151,11 +131,11 @@ The following is a list of HDLProject commands accessible from the Command Palet
 
 ### Completions ###
 
-VHDL and Verilog completions for common keywords is included. These are still under development. 
+VHDL and Verilog completions for common keywords are included. 
 
 ### Platforms ###
 
-* Tested on Windows 10, Ubuntu 22.04 (Pop!\_OS), and macOS Ventura
+* Tested on Windows 10/11, Ubuntu 22.04 (Pop!\_OS), and macOS Ventura
 
 ### Syntax Highlighting ###
 
@@ -190,24 +170,19 @@ Note, the theme [Boxy Theme] (https://github.com/ihodev/sublime-boxy) was used f
 
 ##### Admin Privileges #####
 
-**_Note that on Windows it is recommended to always run ST4 with admin privileges.** This allows for the creation of symlinks and speeds up project creation. Without admin privileges, hardlinks are created which are usually not supported by other plugins -- for example, revision control plugins. Although HDLProject itself will work just fine.
-
-##### Network Drives #####
-
-For a project that contains files on a network drive, you need to be running ST4 in admin mode and have the EnableLinkedConnections registry key set to "1".
-https://serverfault.com/questions/780639/enablelinkedconnections-isnt-working-on-some-windows-10-machines
-
-##### Case Sensitivity #####
-
-Files and folders are cases sensitive on all platforms. 
+**_Note that to use HDLProject on Windows 10/11, it is necessary to run in Developer Mode.** This allows for the creation of symlinks. Otherwise, Sublime Text would need to be run with admin privileges.
 
 ##### Windows Path Character Limit #####
 
-For hierarchies with paths longer than 260 characters (MAX_PATH), the Windows character limit will be exceeded. This may happen with large projects and/or when unwrapping IP cores. When the Windows MAX_PATH length is exceeded, the tool will automatically create secondary hierarchy folders with appropriate naming. If this becomes an issue, it is recommended the user shrink the entity/module or IP names to as few characters as possible. 
+For hierarchies with paths longer than 260 characters (MAX_PATH), the Windows character limit will be exceeded. This may happen with large projects and/or when unwrapping IP cores. When the Windows MAX_PATH length is exceeded, the tool will automatically create secondary hierarchy folders with appropriate naming. But even this could run into a path length limit. It is recommended the user shrink the entity/module or IP names to as few characters as possible. 
 
-##### Symbolic Link Limit #####
+You can get better results with long paths enabled. This can be done by running powershell as admin and using this command:
 
-On Windows, there is also a maximum number of symbolic links that can be created. This will only be reached after a very large number of projects have been created, after several months, or years, depending on usage. Therefore, it is recommended to periodically cleanout old HDLProject directories. 
+    Set-ItemProperty 'HKLM:\System\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -value 1
+
+In the worst case, you will see a warning message during project creation:
+
+    "WARNING: Failed to create link due to Windows 260 character limit for target: ..."
 
 ## License ##
 
@@ -224,6 +199,11 @@ HDLProject is usually installed as a plugin via Package Control within Sublime T
 Having trouble getting started? Please contact me at **info@fpgaland.com**!
 
 ## Changelog ##
+
+#### v1.5.1 ####
+
+* Fixed project creation from fpga_project_file setting on Windows.
+* Added support for remote syntax check with linux client (and linux server).
 
 #### v1.5.0 ####
 
