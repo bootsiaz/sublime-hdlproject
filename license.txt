@@ -1,6 +1,6 @@
 
 HDLProject
-Copyright (c) 2016-2022 Andrew Carter <info@fpgaland.com>
+Copyright (c) 2016-2023 Andrew Carter <info@fpgaland.com>
 
 HDLProject requires a license for regular use. The license can only be 
 obtained by purchasing from the author Andrew Carter. Any person who has purchased a 

@@ -200,6 +200,11 @@ Having trouble getting started? Please contact me at **info@fpgaland.com**!
 
 ## Changelog ##
 
+#### v1.5.2 ####
+
+* Fix for subscription licensing.
+* Added windows project creation script.
+
 #### v1.5.1 ####
 
 * Fixed project creation from fpga_project_file setting on Windows.
@@ -258,4 +263,4 @@ Having trouble getting started? Please contact me at **info@fpgaland.com**!
 
 
 
-**_Copyright 2022, Andrew Carter, All rights reserved._**
+**_Copyright 2023, Andrew Carter, All rights reserved._**
