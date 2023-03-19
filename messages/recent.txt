@@ -11,6 +11,7 @@
 * Live local or remote syntax checking using proven FPGA tools
 * Side-by-side hierarchy and file system
 * On-hover popups for any definition
+* ChatGPT integration
 * Accelerated project navigation
 * Multitask with multiple windows/projects
 * Build integration with Vivado and Quartus
@@ -46,19 +47,6 @@ The created directory structure is a tree of symlinked files and is stored at yo
 
 The created project is separated into a 'hierarchy' and 'libraries' directories. The 'hierarchy' contains the hierarchical RTL. The 'libraries' contains the original source folders. You can quickly jump between a file in the hierarchy to its source folder by using the sidebar **Reveal in Sidebar File System** and **Reveal in Sidebar Hierarchy** commands, accessed from the context menu when right-clicking on a file in the sidebar. 
 
-### Building FPGA ###
-
-HDLProject integrates with the Vivado and Quartus Tcl command line. You can create your own scripts and add their paths to the **build_tcl** list in the preferences file. These scripts can then be run from the command palette via the **HDLProject: Build Tcl** command. Note that Tcl scripts can only be run after a project has been created. Some example Tcl scripts are provided with the plugin to help get you started.
-
-Builds can be cancelled at any time. Any succeeding build will cancel any build that is currently running. HDLProject includes a **_process manager_** object that will keep track of, and later terminate, any spawned processes when cancelling a build or closing ST4. This allows for complex tasks like building an entire FPGA project, opening the GUI, analyzing placement and routing, all from a tcl script, and initiated from ST4. 
-
-The following parameters are passed to the tcl scripts:
-
-* arg0: **project_file** setting from the preferences file for the active project
-* arg1: **top_module** setting from the preferences file for the active project
-* arg2: The file name of the open view **window.active_view().file_name()**
-* arg3: User defined string **user_tcl_arg**
-
 ### On-Hover Definitions ###
 
 Once the project is in memory, a popup will appear when hovering for a few seconds over any port, signal, reg, wire, constant, generic, parameter, define, localparam, instance, variable, type, subtype, use package or include statement. This can be disabled with ctrl+shift+l (cmd+shift+l in macOS).
@@ -78,6 +66,37 @@ Remote syntax check is now supported as well. In this way you could, for example
     "ubuntu@3.96.71.89:/home/ubuntu/xilinx/Vivado/2019.2/bin"
 
 The remote_project_path setting is needed to set the path on your remote machine where your files will be copied. You can use exclude_dirs to speed up the process. There is an optional setting aws_pem_key for the ssh connection which was tested on AWS EC2 (but might work on other cloud services as well).
+
+### ChatGPT Integration ###
+
+HDLProject includes commands for making requests to ChatGPT. There are preset commands, as well as a custom command option that allows the user to write any message they wish. Simply highlight some text in a supported file type (VHDL, Verilog etc.), and run the Chat GPT request command. The highlighted text will be appended to the request message. 
+
+For initial setup, please first install the openai python package from the command line. For example:
+
+    pip install --upgrade openai. 
+
+Then configure your api key acquired from your OpenAI account in the HDLProject settings file. If you have gpt-4 access, change the chatgpt_model to "gpt-4". The organization and system content settings are there for the future. 
+
+    // Settings for ChatGPT requests.
+    "chatgpt_api_key": "",
+    "chatgpt_model": "gpt-3.5-turbo",
+    "chatgpt_organization": "",
+    "chatgpt_system_content": "You are a helpful assistant.",
+
+
+### Building FPGA ###
+
+HDLProject integrates with the Vivado and Quartus Tcl command line. You can create your own scripts and add their paths to the **build_tcl** list in the preferences file. These scripts can then be run from the command palette via the **HDLProject: Build Tcl** command. Note that Tcl scripts can only be run after a project has been created. Some example Tcl scripts are provided with the plugin to help get you started.
+
+Builds can be cancelled at any time. Any succeeding build will cancel any build that is currently running. HDLProject includes a **_process manager_** object that will keep track of, and later terminate, any spawned processes when cancelling a build or closing ST4. This allows for complex tasks like building an entire FPGA project, opening the GUI, analyzing placement and routing, all from a tcl script, and initiated from ST4. 
+
+The following parameters are passed to the tcl scripts:
+
+* arg0: **project_file** setting from the preferences file for the active project
+* arg1: **top_module** setting from the preferences file for the active project
+* arg2: The file name of the open view **window.active_view().file_name()**
+* arg3: User defined string **user_tcl_arg**
+
 
 ### Retrieving Compile Order ###
 
@@ -199,6 +218,11 @@ HDLProject is usually installed as a plugin via Package Control within Sublime T
 Having trouble getting started? Please contact me at **info@fpgaland.com**!
 
 ## Changelog ##
+
+#### v1.5.3 ####
+
+* Added initial ChatGPT integration.
+
 
 #### v1.5.2 ####
 

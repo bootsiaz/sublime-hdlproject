@@ -27,6 +27,12 @@
   // Global FPGA vendor tool path, indicate the full path to the bin folder
   "build_tool_path": "C:/Xilinx/Vivado/2017.2/bin",
 
+  // Settings for ChatGPT requests.
+  "chatgpt_api_key": "",
+  "chatgpt_model": "gpt-3.5-turbo",
+  "chatgpt_organization": "",
+  "chatgpt_system_content": "You are a helpful assistant.",
+
   // Check syntax for the active project.
   // Syntax checking requires Vivado/Quartus/Modelsim/SynplifyPro installation build_tool_path.
   // The syntax_tool_path will overide the build_tool_path for syntax checks.

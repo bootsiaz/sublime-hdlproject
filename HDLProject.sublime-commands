@@ -6,6 +6,7 @@
   { "caption": "HDLProject: Open FPGA Project File", "command": "open_hdl_project_file"},
   { "caption": "HDLProject: Build Tcl", "command": "do_tcl_build"},
   { "caption": "HDLProject: Toggle HDL Popups", "command": "toggle_hdl_popups"},
+  { "caption": "HDLProject: Chat GPT Request", "command": "gpt_request"},
   { "caption": "HDLProject: Create HDL Project", "command": "create_hdl_project"},
   { "caption": "HDLProject: Create HDL Workspace", "command": "create_hdl_workspace"},
   { "caption": "HDLProject: Open HDL Workspace", "command": "open_hdl_workspace"},

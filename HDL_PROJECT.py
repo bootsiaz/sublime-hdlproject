@@ -99,7 +99,8 @@ from hdl_project.commands import (
   ParseProjectGenericsProcessEventListenerCommand,
   ParseConstantsProcessEventListenerCommand,
   CheckHdlSyntaxForWorkspaceEventListenerCommand,
-  CreateHdlProjectShellCommand
+  CreateHdlProjectShellCommand,
+  GptRequestCommand
 )
 
 #Commands that require v3.1 API support. 
