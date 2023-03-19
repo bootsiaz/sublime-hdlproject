@@ -73,7 +73,7 @@ HDLProject includes commands for making requests to ChatGPT. There are preset co
 
 For initial setup, please first install the openai python package from the command line. For example:
 
-    pip install --upgrade openai. 
+    pip install --upgrade openai
 
 Then configure your api key acquired from your OpenAI account in the HDLProject settings file. If you have gpt-4 access, change the chatgpt_model to "gpt-4". The organization and system content settings are there for the future. 
 
