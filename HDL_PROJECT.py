@@ -61,7 +61,7 @@ from hdl_project.commands import (
   SidebarRevealInSidebarHierarchyCommand,
   SignalPopupEventListenerCommand,
   ToggleHdlPopupsCommand,
-  ConstantPopoupEventListenerCommand,
+  ConstantPopupEventListenerCommand,
   OpenHdlProjectFileCommand,
   CheckHdlSyntaxEventListenerCommand,
   CheckHdlSyntaxCommand,
@@ -100,16 +100,11 @@ from hdl_project.commands import (
   ParseConstantsProcessEventListenerCommand,
   CheckHdlSyntaxForWorkspaceEventListenerCommand,
   CreateHdlProjectShellCommand,
-  GptRequestCommand
+  GptRequestCommand,
+  AddNewProjectEntryCommand,
+  UpdateProjectEntryCommand,
+  RemoveProjectEntryCommand
 )
-
-#Commands that require v3.1 API support. 
-if int(sublime.version()) > 3170:
-  from hdl_project.commands import (
-    AddNewProjectEntryCommand,
-    UpdateProjectEntryCommand,
-    RemoveProjectEntryCommand
-  )
 
 
 #Required to write to custom panel

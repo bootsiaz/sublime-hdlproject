@@ -182,6 +182,9 @@
         "mydefine1"
       ],
 
+      // Optional verilog header dir. Currenlty only used by Vivado.
+      "verilog_header_dir": "",
+
       // Remote project path on server. Used for syntax check from remote install or remote builds.
       // Can be global or unique to project
       "remote_project_path": ""

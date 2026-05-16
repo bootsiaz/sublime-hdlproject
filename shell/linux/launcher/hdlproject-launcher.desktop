@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Launch HDL Project
+Exec=<my_path>/HDLProject/shell/linux/launcher/launch_hdlproject.sh %f
+MimeType=application/hdlproject
+Type=Application
+Terminal=false
+NoDisplay=false

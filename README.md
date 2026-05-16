@@ -33,13 +33,29 @@ https://bitbucket.org/bootsiaz/sublime-hdlproject/overview
 
 For FPGA development, you can simply use the fpga_project_file to point to the file or path of your FPGA project. No other project settings are required.
 
-Alternatively, you can use one of the example scripts to allow for opening or creating a project by double clicking a file (or right-click Run Program on Linux).
+Alternatively, you can use one of the example scripts to allow for opening or creating a project by double clicking a file (or right-click Run Program on Linux). For example, you can copy the my_project.hdlp to your FPGA project directory and execute the hdlp script. It will create a HDLProject as long as there is an existing supported project to mirror from: .xpr, .xml etc. 
+
+A third method of creating an HDLProject, specific to Linux, is to simply double-click a supported project type (.xpr etc.). This requires a one-time setup:
+
+  * Create a new MIME type and register it. (Create the directories if they do not exist.)
+    * Copy the included sublimehdlproject/shell/linux/launcher/x-xpr.xml to ~/.local/share/mime/packages/
+    * update the database: update-mime-database ~/.local/share/mime/
+  * Create a .desktop and associate with the extension's MIME type:
+    * Edit the exec path in the included sublimehdlproject/shell/linux/launcher/hdlproject-launcher.desktop to point to the included launch_hdlproject.sh
+    * Copy the .desktop file to ~/.local/share/applications/
+    * Update the desktop app database: update-desktop-database ~/.local/share/applications
+    * Make the included script executable: chmod +x sublimehdlproject/shell/linux/launcher/launch_hdlproject.sh
+    * Explicitly associate the MIME type: xdg-mime default hdlproject-launcher.desktop application/hdlproject
+
 
 Otherwise, you can add specific files or folders to a project. Please see the example settings file. 
 
 On Windows, please make sure **Windows Developer Mode** is enabled to use this plugin.
 
 For any issues with project creation, please contact me at info@fpgaland.com.
+
+TODO: Add notes for shell scripts and linux custom command:
+bash -c 'subl --command "create_hdl_project_shell {\"project_file_path\" : \"$(pwd)\"}"'
 
 ### Navigating the Project ###
 

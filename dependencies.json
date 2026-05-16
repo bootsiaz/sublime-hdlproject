@@ -1,6 +1,6 @@
 {
     "*": {
-        ">=3124": [
+        ">=4050": [
             "pygments",
             "python-markdown",
             "mdpopups",
@@ -10,5 +10,4 @@
             "pyyaml"
         ]
     }
-
 }
