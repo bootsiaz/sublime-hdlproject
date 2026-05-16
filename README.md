@@ -21,11 +21,10 @@
 
 ## Web ##
 
-https://hdlproject.com
+(currently not live) https://hdlproject.com
 
 https://packagecontrol.io/packages/HDLProject
 
-https://bitbucket.org/bootsiaz/sublime-hdlproject/overview
 
 ## Workflow ##
 
@@ -52,7 +51,7 @@ Otherwise, you can add specific files or folders to a project. Please see the ex
 
 On Windows, please make sure **Windows Developer Mode** is enabled to use this plugin.
 
-For any issues with project creation, please contact me at info@fpgaland.com.
+For any issues with project creation, please contact me at sublimehdlproject@gmail.com.
 
 TODO: Add notes for shell scripts and linux custom command:
 bash -c 'subl --command "create_hdl_project_shell {\"project_file_path\" : \"$(pwd)\"}"'
@@ -221,9 +220,9 @@ In the worst case, you will see a warning message during project creation:
 
 ## License ##
 
-HDLProject requires a monthly subscription. Licenses are valid for a single person, on any number of machines, and are valid for all upgrades to the major version purchased. The license is not node-locked nor time-limited. A license can be purchased through PayPal at https://hdlproject.com. A product key will be emailed to you within 24h of purchase.
+HDLProject requires a monthly subscription. Licenses are valid for a single person, on any number of machines, and are valid for all upgrades to the major version purchased. The license is not node-locked nor time-limited. A license can be purchased by request at sublimehdlproject@gmail.com. A product key will be emailed to you within 24h of purchase.
 
-Please contact me at **info@fpgaland.com** with any questions or concerns.
+Please contact me at **sublimehdlproject@gmail.com** with any questions or concerns.
 
 ## Install ##
 
@@ -231,7 +230,7 @@ HDLProject is usually installed as a plugin via Package Control within Sublime T
 
 ## Contact ##
 
-Having trouble getting started? Please contact me at **info@fpgaland.com**!
+Having trouble getting started? Please contact me at **sublimehdlproject@gmail.com**!
 
 ## Changelog ##
 
