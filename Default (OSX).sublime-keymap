@@ -1,4 +1,0 @@
-[
-    { "keys": ["super+shift+l"], "command": "toggle_hdl_popups" },
-    { "keys": ["super+shift+b"], "command": "cancel_tcl_build" },
-]
