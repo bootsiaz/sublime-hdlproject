@@ -3,234 +3,548 @@
 
 ---
 
+## Features
 
-## Features ##
+HDLProject is designed to make RTL project navigation, FPGA project mirroring, syntax checking, and build automation feel native inside Sublime Text 4.
 
-* Simplify project creation
-* Mirror FPGA projects
-* Live local or remote syntax checking using proven FPGA tools
-* Side-by-side hierarchy and file system
-* On-hover popups for any definition
-* ChatGPT integration
-* Accelerated project navigation
-* Multitask with multiple windows/projects
-* Build integration with Vivado and Quartus
-* Code on Windows/Linux/macOS
-* Get compile order for use with other design tools (for example Modelsim)
-* License is not node-locked or time-limited
+Key features include:
 
-## Web ##
+- Streamlined HDL project creation
+- FPGA project mirroring for supported vendor project files
+- Live local or remote syntax checking using established FPGA toolchains
+- Side-by-side hierarchy and original file-system views
+- On-hover popups for definitions, declarations, instances, includes, packages, and related HDL symbols
+- Fast project navigation across modules, entities, hierarchy, and source files
+- Support for working across multiple Sublime Text windows and HDL projects
+- Vivado and Quartus Tcl build integration
+- Cross-platform development on Windows, Linux, and macOS
+- Compile-order generation for use with external simulation and design tools, such as ModelSim
+- Optional ChatGPT integration for selected HDL code
+- Flexible licensing that is not node-locked or time-limited
 
-(currently not live) https://hdlproject.com
+---
 
+## Web
+
+HDLProject is available through Package Control:
+
+```text
 https://packagecontrol.io/packages/HDLProject
+```
 
+---
 
-## Workflow ##
+## Installation
 
-### Project Creation ###
+HDLProject is typically installed through Package Control in Sublime Text 4.
 
-For FPGA development, you can simply use the fpga_project_file to point to the file or path of your FPGA project. No other project settings are required.
+1. Open the Command Palette:
 
-Alternatively, you can use one of the example scripts to allow for opening or creating a project by double clicking a file (or right-click Run Program on Linux). For example, you can copy the my_project.hdlp to your FPGA project directory and execute the hdlp script. It will create a HDLProject as long as there is an existing supported project to mirror from: .xpr, .xml etc. 
+   ```text
+   ctrl+shift+p
+   ```
 
-A third method of creating an HDLProject, specific to Linux, is to simply double-click a supported project type (.xpr etc.). This requires a one-time setup:
+2. Search for:
 
-  * Create a new MIME type and register it. (Create the directories if they do not exist.)
-    * Copy the included sublimehdlproject/shell/linux/launcher/x-xpr.xml to ~/.local/share/mime/packages/
-    * update the database: update-mime-database ~/.local/share/mime/
-  * Create a .desktop and associate with the extension's MIME type:
-    * Edit the exec path in the included sublimehdlproject/shell/linux/launcher/hdlproject-launcher.desktop to point to the included launch_hdlproject.sh
-    * Copy the .desktop file to ~/.local/share/applications/
-    * Update the desktop app database: update-desktop-database ~/.local/share/applications
-    * Make the included script executable: chmod +x sublimehdlproject/shell/linux/launcher/launch_hdlproject.sh
-    * Explicitly associate the MIME type: xdg-mime default hdlproject-launcher.desktop application/hdlproject
+   ```text
+   Package Control: Install Package
+   ```
 
+3. Type:
 
-Otherwise, you can add specific files or folders to a project. Please see the example settings file. 
+   ```text
+   HDLProject
+   ```
 
-On Windows, please make sure **Windows Developer Mode** is enabled to use this plugin.
+4. Press Enter to install.
 
-For any issues with project creation, please contact me at sublimehdlproject@gmail.com.
+Alternatively, you can clone the repository and place it directly in your Sublime Text `Packages` folder.
 
-TODO: Add notes for shell scripts and linux custom command:
+---
+
+## License
+
+HDLProject requires a license for continued use.
+
+Licenses are issued to a single person and may be used on any number of machines owned or used by that person. Licenses are valid for all updates within the purchased major version.
+
+The license is:
+
+- Not node-locked
+- Not time-limited
+- Valid across multiple machines for the licensed user
+- Valid for all updates within the purchased major version
+
+Licenses can be purchased by request at:
+
+```text
+sublimehdlproject@gmail.com
+```
+
+A product key will be emailed within 24 hours of purchase.
+
+### Pricing
+
+| License | Price |
+|---|---:|
+| Professional / Individual | $199 |
+| Commercial Seat | $299 |
+| Small Team Pack | $749 for 3 seats |
+| Site License | $2,500+ |
+
+### License Types
+
+**Professional / Individual License**
+
+For individual engineers, consultants, researchers, students, hobbyists, or solo users purchasing HDLProject for their own use.
+
+**Commercial Seat**
+
+For company-funded use, employee use at a company, reimbursed purchases, invoice or purchase-order workflows, and professional team environments.
+
+**Small Team Pack**
+
+For small teams that need multiple seats under a single purchase.
+
+**Site License**
+
+For organizations that need broader internal access, simplified deployment, or custom licensing terms.
+
+HDLProject is a niche professional RTL productivity tool. Pricing reflects ongoing maintenance for modern HDL workflows, FPGA toolchain compatibility, and professional support expectations. It is priced as an engineering productivity tool, not as a one-off theme or syntax package.
+
+For licensing questions, purchase requests, or support, please contact:
+
+```text
+sublimehdlproject@gmail.com
+```
+
+## Workflow
+
+### Project Creation
+
+For FPGA development, the simplest setup is to configure `fpga_project_file` so it points to your FPGA project file or project directory. No additional project settings are required for this workflow.
+
+HDLProject can also create or open a project from a launcher file. For example, you can copy `my_project.hdlp` into your FPGA project directory and run the included `hdlp` script. HDLProject will create a mirrored project as long as it can detect a supported source project, such as a `.xpr`, `.xml`, or other supported project file.
+
+On Linux, HDLProject can also be configured so supported FPGA project files, such as `.xpr` files, can be opened directly by double-clicking them. This requires a one-time MIME type and desktop launcher setup.
+
+1. Create and register the MIME type.
+
+   Create the required directories if they do not already exist, then copy:
+
+   ```bash
+   sublimehdlproject/shell/linux/launcher/x-xpr.xml
+   ```
+
+   to:
+
+   ```bash
+   ~/.local/share/mime/packages/
+   ```
+
+   Then update the MIME database:
+
+   ```bash
+   update-mime-database ~/.local/share/mime/
+   ```
+
+2. Create and register the desktop launcher.
+
+   Edit the `Exec` path in:
+
+   ```bash
+   sublimehdlproject/shell/linux/launcher/hdlproject-launcher.desktop
+   ```
+
+   so it points to the included `launch_hdlproject.sh` script.
+
+   Copy the `.desktop` file to:
+
+   ```bash
+   ~/.local/share/applications/
+   ```
+
+   Then update the desktop application database:
+
+   ```bash
+   update-desktop-database ~/.local/share/applications
+   ```
+
+3. Make the launcher script executable.
+
+   ```bash
+   chmod +x sublimehdlproject/shell/linux/launcher/launch_hdlproject.sh
+   ```
+
+4. Associate the MIME type with the HDLProject launcher.
+
+   ```bash
+   xdg-mime default hdlproject-launcher.desktop application/hdlproject
+   ```
+
+Alternatively, you can create a project by adding specific files or folders manually. See the example settings file for details.
+
+On Windows, **Windows Developer Mode must be enabled** to use HDLProject. This is required so the plugin can create symbolic links without running Sublime Text as an administrator.
+
+For help with project creation, please contact:
+
+```text
+sublimehdlproject@gmail.com
+```
+
+Example Linux shell command for creating a project from the current directory:
+
+```bash
 bash -c 'subl --command "create_hdl_project_shell {\"project_file_path\" : \"$(pwd)\"}"'
+```
 
-### Navigating the Project ###
+---
 
-The created directory structure is a tree of symlinked files and is stored at your custom output path provided in the preferences file. If not defined, it will be created at **$TEMP/sublime_hdl_project** on Windows, or **~/.sublime_hdl_project** on macOS and Linux. 
+### Navigating the Project
 
-The created project is separated into a 'hierarchy' and 'libraries' directories. The 'hierarchy' contains the hierarchical RTL. The 'libraries' contains the original source folders. You can quickly jump between a file in the hierarchy to its source folder by using the sidebar **Reveal in Sidebar File System** and **Reveal in Sidebar Hierarchy** commands, accessed from the context menu when right-clicking on a file in the sidebar. 
+HDLProject creates a directory tree made up of symbolic links to your original source files. The generated project is stored at the custom output path defined in your preferences file.
 
-### On-Hover Definitions ###
+If no output path is configured, HDLProject uses the following defaults:
 
-Once the project is in memory, a popup will appear when hovering for a few seconds over any port, signal, reg, wire, constant, generic, parameter, define, localparam, instance, variable, type, subtype, use package or include statement. This can be disabled with ctrl+shift+l (cmd+shift+l in macOS).
+- Windows: `$TEMP/sublime_hdl_project`
+- macOS and Linux: `~/.sublime_hdl_project`
 
-Popups allow for quick navigation within the active file and project. For example, hovering over a signal will provide information on its definition as well as a link to the definition. Links to assignments (fan-in) within the file are also provided. 
+The generated project is organized into two main directories:
 
-Navigation links are also provided when hovering over a module instance or package/incude statement, which provides a file preview and the ability to jump to any line in that file.  
+- `hierarchy` — contains the hierarchical RTL view
+- `libraries` — contains the original source folder structure
 
-### Live Syntax Checking ###
+You can quickly move between a file in the hierarchy view and its original source location using the sidebar context menu:
 
-Syntax checking requires a third-party tool installation and the location specified with the **syntax_tool_path** setting. If not defined, it will try using the **build_tool_path**. Supported tools are listed in the example user settings file. The **check_syntax_on_save** setting will call the syntax checker thread when any VHDL or Verilog file is saved within a HDL Project window. 
+- **Reveal in Sidebar File System**
+- **Reveal in Sidebar Hierarchy**
 
-The number of errors is displayed in the status bar. You can navigate syntax errors in your project by using the **go_to_prev_syntax_error** and **go_to_next_syntax_error** commands. A dot is placed in the gutter to the left of the line associated with any error. Hovering over the dot will provide a popup with the error message from the syntax log. To view the syntax log, enable the **check_syntax_panel** setting. Note, as with most other tools, syntax checking only works within an active project.
+These commands are available by right-clicking a file in the Sublime Text sidebar.
 
-Remote syntax check is now supported as well. In this way you could, for example, code on MacOS and have live syntax checking on each save. Please use syntax_tool_path with a remote path, for example:
-    
-    "ubuntu@3.96.71.89:/home/ubuntu/xilinx/Vivado/2019.2/bin"
+---
 
-The remote_project_path setting is needed to set the path on your remote machine where your files will be copied. You can use exclude_dirs to speed up the process. There is an optional setting aws_pem_key for the ssh connection which was tested on AWS EC2 (but might work on other cloud services as well).
+### On-Hover Definitions
 
-### ChatGPT Integration ###
+After the project is loaded into memory, HDLProject provides hover popups for common HDL symbols and constructs, including:
 
-HDLProject includes commands for making requests to ChatGPT. There are preset commands, as well as a custom command option that allows the user to write any message they wish. Simply highlight some text in a supported file type (VHDL, Verilog etc.), and run the Chat GPT request command. The highlighted text will be appended to the request message. 
+- Ports
+- Signals
+- Registers
+- Wires
+- Constants
+- Generics
+- Parameters
+- Defines
+- Localparams
+- Instances
+- Variables
+- Types and subtypes
+- Package `use` statements
+- Include statements
 
-For initial setup, please first install the openai python package from the command line. For example:
+Hovering over a supported item for a few seconds displays a popup with definition and navigation information.
 
-    pip install --upgrade openai
+Popups can be toggled with:
 
-Then configure your api key acquired from your OpenAI account in the HDLProject settings file. If you have gpt-4 access, change the chatgpt_model to "gpt-4". The organization and system content settings are there for the future. 
+- Windows/Linux: `ctrl+shift+l`
+- macOS: `cmd+shift+l`
 
-    // Settings for ChatGPT requests.
-    "chatgpt_api_key": "",
-    "chatgpt_model": "gpt-3.5-turbo",
-    "chatgpt_organization": "",
-    "chatgpt_system_content": "You are a helpful assistant.",
+Hover popups support quick navigation within the active file and across the project. For example, hovering over a signal shows its definition and provides a link to jump to it. Assignment links, or fan-in references, are also shown when available within the active file.
 
+Hovering over a module instance, package statement, or include statement provides navigation links, a file preview, and the ability to jump directly to a line in the referenced file.
 
-### Building FPGA ###
+---
 
-HDLProject integrates with the Vivado and Quartus Tcl command line. You can create your own scripts and add their paths to the **build_tcl** list in the preferences file. These scripts can then be run from the command palette via the **HDLProject: Build Tcl** command. Note that Tcl scripts can only be run after a project has been created. Some example Tcl scripts are provided with the plugin to help get you started.
+### Live Syntax Checking
 
-Builds can be cancelled at any time. Any succeeding build will cancel any build that is currently running. HDLProject includes a **_process manager_** object that will keep track of, and later terminate, any spawned processes when cancelling a build or closing ST4. This allows for complex tasks like building an entire FPGA project, opening the GUI, analyzing placement and routing, all from a tcl script, and initiated from ST4. 
+Syntax checking requires a supported third-party HDL tool. Configure the tool path using the `syntax_tool_path` setting.
 
-The following parameters are passed to the tcl scripts:
+If `syntax_tool_path` is not defined, HDLProject will attempt to use `build_tool_path`. Supported syntax tools are listed in the example user settings file.
 
-* arg0: **project_file** setting from the preferences file for the active project
-* arg1: **top_module** setting from the preferences file for the active project
-* arg2: The file name of the open view **window.active_view().file_name()**
-* arg3: User defined string **user_tcl_arg**
+When `check_syntax_on_save` is enabled, HDLProject runs the syntax checker whenever a VHDL or Verilog file is saved inside an active HDLProject window.
 
+Syntax checking results are shown in several places:
 
-### Retrieving Compile Order ###
+- The number of errors appears in the status bar.
+- Error locations are marked with gutter icons.
+- Hovering over an error marker displays the corresponding syntax error message.
+- The syntax log can be shown by enabling `check_syntax_panel`.
 
-To get a list of files in the right compile order, run the **Create Compile Order** command from the command palette. If a file you need is missing from the project, for example a non-HDL file, you can specify it in the 'libraries' section in the project settings.
+You can navigate between syntax errors with the following commands:
 
-### Key Bindings ###
+- `go_to_prev_syntax_error`
+- `go_to_next_syntax_error`
 
-Windows and Linux:
+As with most HDLProject features, syntax checking requires an active project.
 
-    { "keys": ["ctrl+shift+l"], "command": "toggle_hdl_popups" },
-    { "keys": ["ctrl+shift+b"], "command": "cancel_tcl_build"},
-    { "keys": ["alt+r"], "command": "refresh_hdl_project" },
+#### Remote Syntax Checking
 
-macOS:
+HDLProject also supports remote syntax checking. This allows you to edit locally, for example on macOS, while running syntax checks on a remote Linux machine or cloud instance.
 
-    { "keys": ["super+shift+l"], "command": "toggle_hdl_popups" },
-    { "keys": ["super+shift+b"], "command": "cancel_tcl_build" },
+To configure remote syntax checking, set `syntax_tool_path` to a remote path. For example:
 
-### Command Reference ###
+```json
+"syntax_tool_path": "ubuntu@3.96.71.89:/home/ubuntu/xilinx/Vivado/2019.2/bin"
+```
 
-The following is a list of HDLProject commands accessible from the Command Palette (ctrl+shift+p). Any one of these commands can be mapped to keys via the Preferences->Key Bindings file.
+You must also configure `remote_project_path`, which specifies where files will be copied on the remote machine.
 
-* open_hdl_project
-* delete_hdl_project
-* refresh_hdl_project
-* context_open_original_containing_folder
-* open_hdl_project_file
-* do_tcl_build
-* toggle_hdl_popups
-* create_hdl_project
-* generate_hdl_compile_order
-* check_hdl_syntax
-* go_to_prev_hdl_syntax_error
-* go_to_next_hdl_syntax_error
-* cleanup_module_ambiguity
-* open_reference_project
-* comment_selection
-* cancel_tcl_build
-* open_hdl_panel
-* open_module_by_filename
-* open_module_by_hierarchy
-* generate_file_list
-* open_output_path
-* explore_file_system_in_quick_panel
-* add_new_project_entry
-* open_hdl_parent
-* create_data_structure_json
-* update_project_generics
-* toggle_split_panel
-* create_workspace
+To improve sync performance, use `exclude_dirs` to omit unnecessary directories.
 
-### Completions ###
+The optional `aws_pem_key` setting can be used for SSH authentication. This has been tested with AWS EC2 and may also work with other cloud providers.
 
-VHDL and Verilog completions for common keywords are included. 
+---
 
-### Platforms ###
+### ChatGPT Integration
 
-* Tested on Windows 10/11, Ubuntu 22.04 (Pop!\_OS), and macOS Ventura
+HDLProject includes commands for sending selected HDL code to ChatGPT. Preset commands are provided, and a custom request command allows you to write your own prompt.
 
-### Syntax Highlighting ###
+To use this feature, highlight text in a supported file type, such as VHDL or Verilog, then run a ChatGPT request command. The selected text is appended to the request message.
 
-HDLProject comes with forked versions of the sublime-vhdl and sublime-verilog syntax highlighting packages. These can be selected from the View menu, at View->Syntax->HDLProject->VHDL/Verilog. 
+#### Setup
 
-These updated syntaxes allow for uncluttered navigation of the active file and project. Typing ctrl+R brings up the Goto Definition dropdown for the active file. This allows you to jump to module instances within that file. Typing ctrl+shift+R bring up the Goto Definition dropdown for the project. This allows you to jump to any module/entity definition in the project. 
+First, install the OpenAI Python package from the command line:
 
-The packages remain open source. If interested, they can also be found externally here:
-    * [VHDL Syntax Package](https://github.com/bootsiaz/sublime-vhdl)
-    * [Verilog Syntax Package](https://github.com/bootsiaz/sublime-verilog)
+```bash
+pip install --upgrade openai
+```
 
-##### Verilog.sublime-syntax #####
+Then configure your OpenAI API key in the HDLProject settings file.
 
-Since ST4 syntax only supports single-line regex matching, the Goto Panel and color scheme will pickup Verilog instances in only the specified format. For instances without parameters include the opening bracket on the first line. 
+If your API account has access to GPT-4, set `chatgpt_model` to `"gpt-4"`.
 
-    instance_name module_name (
-      <port_list>
-    );
+Example settings:
 
-For instances with parameters, the following is supported. 
+```json
+// Settings for ChatGPT requests.
+"chatgpt_api_key": "",
+"chatgpt_model": "gpt-3.5-turbo",
+"chatgpt_organization": "",
+"chatgpt_system_content": "You are a helpful assistant."
+```
 
-    instance_name (
-      <parameters>
-    ) module_name (
-      <port_list>
-    );
+The `chatgpt_organization` and `chatgpt_system_content` settings are included for future use and customization.
 
+---
 
-Note, the theme [Boxy Theme] (https://github.com/ihodev/sublime-boxy) was used for testing changes to the syntax files. 
+### Building FPGA Projects
 
-### HDLProject on Windows ###
+HDLProject integrates with the Vivado and Quartus Tcl command-line flows.
 
-##### Admin Privileges #####
+You can create your own Tcl scripts and add their paths to the `build_tcl` list in the preferences file. These scripts can then be launched from the Command Palette using:
 
-**_Note that to use HDLProject on Windows 10/11, it is necessary to run in Developer Mode.** This allows for the creation of symlinks. Otherwise, Sublime Text would need to be run with admin privileges.
+```text
+HDLProject: Build Tcl
+```
 
-##### Windows Path Character Limit #####
+Tcl scripts can only be run after an HDLProject has been created.
 
-For hierarchies with paths longer than 260 characters (MAX_PATH), the Windows character limit will be exceeded. This may happen with large projects and/or when unwrapping IP cores. When the Windows MAX_PATH length is exceeded, the tool will automatically create secondary hierarchy folders with appropriate naming. But even this could run into a path length limit. It is recommended the user shrink the entity/module or IP names to as few characters as possible. 
+Example Tcl scripts are included with the plugin to help you get started.
 
-You can get better results with long paths enabled. This can be done by running powershell as admin and using this command:
+Builds can be cancelled at any time. Starting a new build automatically cancels any currently running build.
 
-    Set-ItemProperty 'HKLM:\System\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -value 1
+HDLProject includes a process manager that tracks spawned processes and terminates them when a build is cancelled or when Sublime Text 4 is closed. This supports more complex workflows, such as:
 
-In the worst case, you will see a warning message during project creation:
+- Building an entire FPGA project
+- Opening the FPGA tool GUI
+- Running placement and routing analysis
+- Launching custom Tcl-based automation from Sublime Text
 
-    "WARNING: Failed to create link due to Windows 260 character limit for target: ..."
+The following arguments are passed to Tcl scripts:
 
-## License ##
+| Argument | Value |
+|---|---|
+| `arg0` | The `project_file` setting for the active project |
+| `arg1` | The `top_module` setting for the active project |
+| `arg2` | The active file path from `window.active_view().file_name()` |
+| `arg3` | The user-defined `user_tcl_arg` string |
 
-HDLProject requires a monthly subscription. Licenses are valid for a single person, on any number of machines, and are valid for all upgrades to the major version purchased. The license is not node-locked nor time-limited. A license can be purchased by request at sublimehdlproject@gmail.com. A product key will be emailed to you within 24h of purchase.
+---
 
-Please contact me at **sublimehdlproject@gmail.com** with any questions or concerns.
+### Retrieving Compile Order
 
-## Install ##
+To generate a file list in compile order, run the following command from the Command Palette:
 
-HDLProject is usually installed as a plugin via Package Control within Sublime Text 4. Use shift+ctrl+P, type 'install', then type 'HDLProject' and press Enter.
+```text
+Create Compile Order
+```
 
-## Contact ##
+If a required file is missing from the project, such as a non-HDL support file, add it to the `libraries` section in the project settings.
 
-Having trouble getting started? Please contact me at **sublimehdlproject@gmail.com**!
+---
+
+### Key Bindings
+
+#### Windows and Linux
+
+```json
+{ "keys": ["ctrl+shift+l"], "command": "toggle_hdl_popups" },
+{ "keys": ["ctrl+shift+b"], "command": "cancel_tcl_build" },
+{ "keys": ["alt+r"], "command": "refresh_hdl_project" }
+```
+
+#### macOS
+
+```json
+{ "keys": ["super+shift+l"], "command": "toggle_hdl_popups" },
+{ "keys": ["super+shift+b"], "command": "cancel_tcl_build" }
+```
+
+---
+
+### Command Reference
+
+The following HDLProject commands are available from the Command Palette:
+
+```text
+open_hdl_project
+delete_hdl_project
+refresh_hdl_project
+context_open_original_containing_folder
+open_hdl_project_file
+do_tcl_build
+toggle_hdl_popups
+create_hdl_project
+generate_hdl_compile_order
+check_hdl_syntax
+go_to_prev_hdl_syntax_error
+go_to_next_hdl_syntax_error
+cleanup_module_ambiguity
+open_reference_project
+comment_selection
+cancel_tcl_build
+open_hdl_panel
+open_module_by_filename
+open_module_by_hierarchy
+generate_file_list
+open_output_path
+explore_file_system_in_quick_panel
+add_new_project_entry
+open_hdl_parent
+create_data_structure_json
+update_project_generics
+toggle_split_panel
+create_workspace
+```
+
+Any command can be mapped to a custom key binding through:
+
+```text
+Preferences > Key Bindings
+```
+
+---
+
+### Completions
+
+HDLProject includes VHDL and Verilog completions for common HDL keywords.
+
+---
+
+### Supported Platforms
+
+HDLProject has been tested on:
+
+- Windows 10/11
+- Ubuntu 22.04 / Pop!_OS
+- macOS Ventura
+
+---
+
+### Syntax Highlighting
+
+HDLProject includes forked versions of the `sublime-vhdl` and `sublime-verilog` syntax highlighting packages.
+
+These syntaxes can be selected from the Sublime Text menu:
+
+```text
+View > Syntax > HDLProject > VHDL
+View > Syntax > HDLProject > Verilog
+```
+
+The updated syntax definitions are designed to improve navigation within the active file and across the project.
+
+Useful navigation shortcuts include:
+
+- `ctrl+r` — opens the Goto Definition dropdown for the active file
+- `ctrl+shift+r` — opens the Goto Definition dropdown for the project
+
+The active-file dropdown allows you to jump to module instances within the current file. The project-wide dropdown allows you to jump to any module or entity definition in the project.
+
+The syntax packages remain open source and are also available separately:
+
+- [VHDL Syntax Package](https://github.com/bootsiaz/sublime-vhdl)
+- [Verilog Syntax Package](https://github.com/bootsiaz/sublime-verilog)
+
+#### Verilog Syntax Notes
+
+Sublime Text 4 syntax definitions support single-line regular expression matching. Because of this limitation, the Goto Panel and color scheme detect Verilog instances only when they follow the supported formatting patterns.
+
+For instances without parameters, place the opening parenthesis on the first line:
+
+```verilog
+instance_name module_name (
+  <port_list>
+);
+```
+
+For instances with parameters, use the following format:
+
+```verilog
+instance_name (
+  <parameters>
+) module_name (
+  <port_list>
+);
+```
+
+The [Boxy Theme](https://github.com/ihodev/sublime-boxy) was used while testing changes to the syntax files.
+
+---
+
+### HDLProject on Windows
+
+#### Administrator Privileges
+
+On Windows 10/11, HDLProject requires **Windows Developer Mode**. This allows HDLProject to create symbolic links without requiring Sublime Text to be run as an administrator.
+
+Without Developer Mode, Sublime Text may need to be launched with administrator privileges for symbolic link creation to work.
+
+#### Windows Path Character Limit
+
+Large HDL projects can exceed the Windows `MAX_PATH` limit of 260 characters, especially when working with deeply nested hierarchies or unwrapped IP cores.
+
+When HDLProject detects paths that exceed this limit, it automatically creates secondary hierarchy folders with appropriate naming. However, very large or deeply nested projects may still exceed the Windows path limit.
+
+To reduce the chance of path-length issues:
+
+- Use shorter entity, module, and IP names where possible.
+- Keep project paths short.
+- Enable long path support in Windows.
+
+To enable long paths, run PowerShell as administrator and execute:
+
+```powershell
+Set-ItemProperty 'HKLM:\System\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -value 1
+```
+
+If HDLProject cannot create a link because of the path length limit, a warning similar to the following will be shown during project creation:
+
+```text
+WARNING: Failed to create link due to Windows 260 character limit for target: ...
+```
+
+---
+
+## Contact
+
+Having trouble getting started?
+
+Contact:
+
+```text
+sublimehdlproject@gmail.com
+```
 
 ## Changelog ##
 
@@ -270,45 +584,5 @@ Having trouble getting started? Please contact me at **sublimehdlproject@gmail.c
 * Changed licensing to subscription based with one free month
 * More updates for workspaces, but not fully supported yet.
 
-#### v1.4.5 ####
 
-* Added expanding of paths that have environment variables.
-* Fixed cleanup of all open views when syntax errors are fixed.
-* Added support for project creation with just one setting when tracking FPGA projects: fpga_project_file
-* Added support for fpga_project_file as a path (no recursion yet)
-* Added support for global per_parse_script setting
-* Added pre_parse_with_relative_paths setting for running pre_parse_script with paths realtive to fpga_project_file.
-
-#### v1.4.4 ####
-
-* Tentative fix for Modelsim syntax check when install dir is Mentor/modeltech...
-
-#### v1.4.3 ####
-
-* Cleaned up the popup follower links
-* Fixed regression when parsing signals for files outside the project.
-
-#### v1.4.2 ####
-
-* Updates and fixes for signal follower links in popups
-* Fix for panelview auto-scrolling for ST4, added new autoscroll setting.
-* Fix for sync sidebar for ST4
-* Bug fixes
-
-#### v1.4.1 ####
-
-* Added initial signal follower in popups for vhdl. 
-* Added forward assignment popup links in vhdl.
-* Fix for links to vhdl records with end tag name.
-* Fix for inconsistent behavior after first opening ST3/4 vs after working with a project in memory. 
-* Other bug fixes
-
-#### v1.4.0 ####
-
-* Added initial support for choosing from multiple syntax tools from command pallette.
-* Started on updates for ST4.
-* Changed licensing to require product key for projects with more than 50 files. 
-
-
-
-**_Copyright 2023, Andrew Carter, All rights reserved._**
+**_Copyright 2026, Andrew Carter, All rights reserved._**
