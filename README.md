@@ -234,6 +234,15 @@ Having trouble getting started? Please contact me at **sublimehdlproject@gmail.c
 
 ## Changelog ##
 
+#### v1.7.0 ####
+
+* Added verilog_header_dir setting to mirror projects with verilog globals
+* Updated dependencies to >= 4050
+* Some support for vhdl record completion
+* Fix related to multiprocessing python package changes
+* Fixes for quartus syntax checking
+* Other bug fixes
+
 #### v1.5.3 ####
 
 * Added initial ChatGPT integration.
